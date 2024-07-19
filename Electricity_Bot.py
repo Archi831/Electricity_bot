@@ -59,7 +59,7 @@ def iq_callback(query):
         set_cherga_callback(query)
 
 refresh_interval = 598
-admin_chat_id = '722176554'
+admin_chat_id = ''
 threading.Thread(target=periodic_refresh, args=(refresh_interval, admin_chat_id), daemon=True).start() 
 
 
