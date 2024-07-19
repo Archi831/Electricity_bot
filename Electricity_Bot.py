@@ -19,12 +19,13 @@ def start(message):
 
     config = load_user_data()
     Cherga = config.get(f'{message.from_user.id}')
-
+    
     if Cherga: # Checks if cherga was selected
         table = get_table("Today", Cherga)
-        print(f'Asked for table, {message.from_user.id}')
+        print(f'Asked for table, {message.from_user.id}, {message.from_user.username}, {message.from_user.first_name}')
         bot.send_message(message.from_user.id, f'Графік на сьогодні: \n{table}')
-
+        
+        wait_typing(message, 0)
         table = get_table("Tomorrow", Cherga)
         if table:
             bot.send_message(message.from_user.id, f'Графік на завтра: \n{table}')
@@ -57,7 +58,7 @@ def iq_callback(query):
     if data.startswith('set-'):
         set_cherga_callback(query)
 
-refresh_interval = 600
+refresh_interval = 598
 admin_chat_id = '722176554'
 threading.Thread(target=periodic_refresh, args=(refresh_interval, admin_chat_id), daemon=True).start() 
 
