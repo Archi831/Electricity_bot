@@ -48,7 +48,7 @@ def periodic_refresh(interval, chat_id):
             time = schedule.get(f'{Cherga}')
             H, M = map(int, datetime.now().strftime("%H %M").split())
             for i in range(len(time)):
-                if (int(time[i][0]) - H == 1) and ( (60-M) < 17) and ( (60-M) > 7):
+                if (int(time[i][0]) - H == 1) and ( (60-M) < 17) and ( (60-M) > 7) and  (H>7 and H<23):
                     for user_id, cherga in user_data.items():
                         try:
                             if int(Cherga) == int(cherga):
